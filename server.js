@@ -77,7 +77,7 @@ app.get('/', function (req, res) {
   }
 });
 
-getHoroscope(function (req, res) {
+app.get('/horoscope/:sign', function (req, res) {
   if (req.params.sign == 'aries')
   horoscopeText = 'The stars won\'t say exactly what will happen today, \
 but they suggest you say goodbye to your friends and loved ones.';
@@ -128,9 +128,6 @@ res.set({'Access-Control-Allow-Origin': '*',
           'horoscopeText': horoscopeText,
           'css': css});
 });
-
-app.route('/horoscope/:sign')
-  .get(getHoroscope);
 
 app.get('/pagecount', function (req, res) {
   // try to initialize the db on every request if it's not already
